@@ -1,0 +1,23 @@
+,description
+Y-Kappa,"Kappa number at blow line (residual lignin proxy, target)"
+ChipRate,Wood chip feed rate to the digester (throughput)
+BF-CMratio,Blow-flow to chip-mass ratio (dilution / consistency proxy)
+BlowFlow,Pulp flow leaving the digester blow line
+ChipLevel4,Chip column height in the digester
+T-upperExt-2,Upper extraction zone temperature (lag 2 h)
+T-lowerExt-2,Lower extraction (wash) zone temperature (lag 2 h)
+UCZAA,Upper cook zone active alkali concentration
+WhiteFlow-4,"White liquor flow, cook zone (lag 4 h)"
+AAWhiteSt-4,Active alkali strength of white liquor (lag 4 h)
+AA-Wood-4,Active-alkali-to-wood charge ratio (lag 4 h)
+ChipMoisture-4,Chip moisture at feed (lag 4 h)
+SteamFlow-4,Cooking steam flow (lag 4 h)
+Lower-HeatT-3,Lower heater outlet temperature (lag 3 h)
+Upper-HeatT-3,Upper heater outlet temperature (lag 3 h)
+ChipMass-4,Chip mass throughput (lag 4 h)
+WeakLiquorF,Weak liquor (black liquor) flow
+BlackFlow-2,Black liquor flow at extraction (lag 2 h)
+WeakWashF,Weak wash flow to wash zone
+SteamHeatF-3,Steam flow to heaters (lag 3 h)
+T-Top-Chips-4,Top-of-digester chip temperature (lag 4 h)
+SulphidityL-4,Sulphidity of liquor (lag 4 h)
