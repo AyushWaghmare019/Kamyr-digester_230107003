@@ -325,8 +325,23 @@ with tab_eda:
     st.markdown("**Scatter: pick any variable vs Kappa**")
     choice = st.selectbox("Variable", feature_names, index=feature_names.index("WhiteFlow-4")
                           if "WhiteFlow-4" in feature_names else 0)
-    fig = px.scatter(df_full, x=choice, y=target, trendline="ols",
-                     opacity=0.65, height=430)
+try:
+    fig = px.scatter(
+        df_full,
+        x=choice,
+        y=target,
+        trendline="ols",
+        opacity=0.65,
+        height=430
+    )
+except ModuleNotFoundError:
+    fig = px.scatter(
+        df_full,
+        x=choice,
+        y=target,
+        opacity=0.65,
+        height=430
+    )
     st.plotly_chart(fig, use_container_width=True)
 
 
