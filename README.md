@@ -1,4 +1,12 @@
-n the kraft pulping process, the **Kappa number** indicates the amount of residual lignin in pulp and directly impacts bleaching cost, energy consumption, and product quality.
+<img width="359" height="500" alt="image" src="https://github.com/user-attachments/assets/a17c082c-ab28-4015-96a1-a03bc29395d5" /># 🧪 Kappa Number Prediction in a Continuous Kamyr Digester
+
+### CL653 Final Project — Chemical Engineering × Machine Learning
+
+---
+
+## 📌 Overview
+
+In the kraft pulping process, the **Kappa number** indicates the amount of residual lignin in pulp and directly impacts bleaching cost, energy consumption, and product quality.
 
 In practice, Kappa is measured offline using laboratory titration every 1–4 hours. This delay limits process control, as operators must rely on outdated information.
 
@@ -115,16 +123,7 @@ This functions as an **inferential soft sensor** for process monitoring.
 ## 📁 Project Structure
 
 
-kamyr-digester/
-│
-├── kamyr_pipeline.py # Training pipeline
-├── streamlit_app.py # Deployment app
-├── kappa_model.pkl # Trained model
-├── data/
-│ └── kamyr_digester.csv
-├── outputs/ # Plots and results
-├── artifacts/ # Saved models and scalers
-└── README.md
+<img width="359" height="500" alt="image" src="https://github.com/user-attachments/assets/ef73e59a-6ed0-49c8-a341-041f5f550e1a" />
 
 
 ---
@@ -135,12 +134,14 @@ kamyr-digester/
 ```bash
 pip install -r requirements.txt
 ```
-Run the training pipeline
+2. Run the training pipeline
 ```
         python kamyr_pipeline.py
 ```
-3)Launch the Streamlit dashboard
-        ``` python -m streamlit run app.py```
+3. Launch the Streamlit dashboard
+```
+   python -m streamlit run app.py
+```
 
 
 💡 Applications
@@ -148,22 +149,8 @@ Real-time process monitoring
 Reduced dependence on lab measurements
 Improved control of pulp quality
 Lower chemical and energy costs
-⚠️ Limitations
-Small dataset (~300 samples)
-Model performance may degrade over time (drift)
-Not designed for startup/shutdown conditions
-🔮 Future Work
-Hybrid physics + ML models
-Online retraining (sliding window)
-Uncertainty estimation
-Integration with a Digital Twin
-📚 References
-Dayal et al. (1994) — Kamyr digester modelling
-OpenMV dataset (Kevin Dunn)
-TAPPI T236 standard
-Gustafson et al. — Kraft kinetics
-👨‍💻 Author
 
+Author:-
 Aayush Waghmare
 Chemical Engineering | AI/ML in Process Systems
 
