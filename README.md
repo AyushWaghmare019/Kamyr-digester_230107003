@@ -134,10 +134,15 @@ kamyr-digester/
 1. Install dependencies
 ```bash
 pip install -r requirements.txt
+```
 Run the training pipeline
-python kamyr_pipeline.py
-Launch the Streamlit dashboard
-python -m streamlit run app.py
+```
+        python kamyr_pipeline.py
+```
+3)Launch the Streamlit dashboard
+        ``` python -m streamlit run app.py```
+
+
 💡 Applications
 Real-time process monitoring
 Reduced dependence on lab measurements
