@@ -1,220 +1,167 @@
-# 🧪 Kappa Number Prediction in a Continuous Kamyr Digester
+n the kraft pulping process, the **Kappa number** indicates the amount of residual lignin in pulp and directly impacts bleaching cost, energy consumption, and product quality.
 
-### CL653 Final Project — Chemical Engineering + Machine Learning
+In practice, Kappa is measured offline using laboratory titration every 1–4 hours. This delay limits process control, as operators must rely on outdated information.
 
-**Kappa Soft Sensor for Kraft Pulping Process**
-
----
-
-## 📌 Overview
-
-This project develops a **machine-learning-based soft sensor** to predict the **Kappa number** — a key indicator of residual lignin in pulp — in a continuous **Kamyr digester** used in the kraft pulping process.
-
-Traditionally, Kappa number is measured offline using laboratory titration, introducing delays of 1–4 hours. This project replaces that delay with a **real-time predictive model**, enabling faster and more efficient process control.
+This project develops a **data-driven soft sensor** that predicts the Kappa number in near real time using routinely measured process variables from a continuous Kamyr digester.
 
 ---
 
-## 🎯 Objective
+## 🎯 Objectives
 
-* Predict Kappa number using process variables
-* Build a **robust ML pipeline** for industrial data
-* Integrate **chemical engineering principles** (reaction kinetics, transport phenomena)
-* Deploy as an interactive **Streamlit dashboard (soft sensor)**
+- Predict Kappa number from process measurements  
+- Build a robust pipeline for **industrial sensor data**  
+- Incorporate **chemical engineering principles** into modelling  
+- Deploy an interactive **Streamlit dashboard** for real-time use  
 
 ---
 
-## ⚙️ Core Chemical Engineering Concepts
+## ⚙️ Engineering Context
 
-* **Reaction Engineering** → Delignification kinetics
-* **Mass Transfer** → Chemical penetration into wood chips
-* **Transport Phenomena** → Heat + mass coupling
-* **Process Control** → Real-time quality monitoring
+The problem combines multiple core areas of chemical engineering:
+
+- **Reaction Engineering** → Delignification kinetics  
+- **Mass Transfer** → Chemical penetration into wood chips  
+- **Transport Phenomena** → Heat–mass coupling  
+- **Process Control** → Real-time quality monitoring  
 
 ---
 
 ## 📊 Dataset
 
-* Source: https://openmv.net/info/kamyr-digester
-* Observations: **301 rows × 22 variables**
-* Includes **time-lagged variables** (residence time effect)
-* Target: **Kappa number (lignin content)**
+- Source: https://openmv.net/info/kamyr-digester  
+- 301 hourly observations × 22 variables  
+- Includes **time-lagged variables** aligned with residence time  
+- Target variable: **Kappa number**  
 
 ---
 
 ## 🧠 Methodology
 
-### 🔹 Data Preprocessing
+### Data Preprocessing
+- Removed columns with >45% missing values  
+- Median imputation for remaining data  
+- Duplicate removal  
 
-* Drop columns with >45% missing values
-* Median imputation (robust to industrial noise)
-* Duplicate removal
+### Outlier Detection
+- Hampel filter (robust univariate)  
+- IQR rule (cross-check)  
+- Isolation Forest (multivariate anomalies)  
 
-### 🔹 Outlier Detection (Multi-layer)
+### Feature Engineering
+- H-factor proxy (temperature severity)  
+- Active alkali (AA) charge rate  
 
-* Hampel Filter (robust univariate)
-* IQR method (cross-check)
-* Isolation Forest (multivariate anomalies)
+### Scaling
+- StandardScaler (fit on training data only)  
 
-### 🔹 Feature Engineering
-
-* H-factor proxy (temperature-based kinetics)
-* AA charge rate (chemical reaction driver)
-
-### 🔹 Feature Scaling
-
-* StandardScaler (required for ML models)
-
----
-
-### 🔹 Dimensionality Reduction
-
-* PCA → handles multicollinearity
-* t-SNE → nonlinear structure visualization
+### Dimensionality Reduction
+- PCA (handles multicollinearity)  
+- t-SNE (visualizes nonlinear structure)  
 
 ---
 
-### 🔹 Models Trained
+## 🤖 Models Evaluated
 
-| Model                           | Type              |
-| ------------------------------- | ----------------- |
-| Linear Regression               | Baseline          |
-| Partial Least Squares (PLS)     | Chemometric       |
-| Support Vector Regression (SVR) | Nonlinear         |
-| Random Forest                   | Ensemble          |
-| Gradient Boosting               | Advanced Ensemble |
+- Linear Regression  
+- Partial Least Squares (PLS)  
+- Support Vector Regression (SVR)  
+- Random Forest  
+- Gradient Boosting  
 
----
-
-### 🔹 Hyperparameter Tuning
-
-* GridSearchCV
-* 5-fold cross-validation
+Hyperparameter tuning was performed using **GridSearchCV with 5-fold cross-validation**.
 
 ---
 
 ## 📈 Results
 
-| Model             | R²       | RMSE     |
-| ----------------- | -------- | -------- |
-| **SVR (Best)**    | **0.63** | **1.79** |
-| Gradient Boosting | 0.60     | 1.85     |
-| Random Forest     | 0.56     | 1.95     |
-| Linear Regression | 0.48     | 2.12     |
-| PLS               | 0.46     | 2.15     |
+| Model             | R²   | RMSE |
+|------------------|------|------|
+| **SVR (Best)**   | 0.63 | 1.79 |
+| Gradient Boosting| 0.60 | 1.85 |
+| Random Forest    | 0.56 | 1.95 |
+| Linear Regression| 0.48 | 2.12 |
+| PLS              | 0.46 | 2.15 |
 
-👉 SVR achieved performance comparable to **lab measurement uncertainty**
+The best model (SVR) achieves performance comparable to the **intrinsic uncertainty of laboratory Kappa measurement (±1–1.5 units)**.
 
 ---
 
 ## 🔍 Key Insights
 
-Top variables affecting Kappa:
+Important variables influencing Kappa:
 
-* White liquor flow
-* Steam flow & heat
-* Chip rate
-* Alkali concentration
+- White liquor flow  
+- Steam flow and heat input  
+- Chip feed rate  
+- Alkali concentration  
 
-👉 Matches **first-principles chemical engineering theory**
+These results align with **first-principles understanding of kraft pulping**.
 
 ---
 
 ## 🚀 Deployment
 
-* Built using **Streamlit**
-* Features:
+The model is deployed using **Streamlit**, providing:
 
-  * Real-time prediction
-  * What-if analysis
-  * Model comparison
-  * Feature importance visualization
+- Real-time prediction  
+- What-if analysis  
+- Model comparison  
+- Feature importance visualization  
 
-👉 Acts as an **inferential soft sensor**
+This functions as an **inferential soft sensor** for process monitoring.
 
 ---
 
 ## 📁 Project Structure
 
-```
+
 kamyr-digester/
 │
-├── kamyr_pipeline.py        # Training pipeline
-├── streamlit_app.py         # Deployment app
-├── kappa_model.pkl          # Trained model
+├── kamyr_pipeline.py # Training pipeline
+├── streamlit_app.py # Deployment app
+├── kappa_model.pkl # Trained model
 ├── data/
-│   └── kamyr_digester.csv
-├── outputs/                 # Plots & results
-├── artifacts/               # Saved models & scaler
+│ └── kamyr_digester.csv
+├── outputs/ # Plots and results
+├── artifacts/ # Saved models and scalers
 └── README.md
-```
+
 
 ---
 
 ## 🧪 How to Run
 
-### 1. Install dependencies
-
+1. Install dependencies
 ```bash
 pip install -r requirements.txt
-```
-
-### 2. Run Streamlit app
-
-```bash
+Run the training pipeline
+python kamyr_pipeline.py
+Launch the Streamlit dashboard
 python -m streamlit run app.py
-```
+💡 Applications
+Real-time process monitoring
+Reduced dependence on lab measurements
+Improved control of pulp quality
+Lower chemical and energy costs
+⚠️ Limitations
+Small dataset (~300 samples)
+Model performance may degrade over time (drift)
+Not designed for startup/shutdown conditions
+🔮 Future Work
+Hybrid physics + ML models
+Online retraining (sliding window)
+Uncertainty estimation
+Integration with a Digital Twin
+📚 References
+Dayal et al. (1994) — Kamyr digester modelling
+OpenMV dataset (Kevin Dunn)
+TAPPI T236 standard
+Gustafson et al. — Kraft kinetics
+👨‍💻 Author
 
----
-
-## 💡 Applications
-
-* Real-time process monitoring
-* Reduced lab dependency
-* Improved pulp quality control
-* Cost optimization in bleaching
-
----
-
-## ⚠️ Limitations
-
-* Small dataset (~300 samples)
-* Model drift over time
-* Not suitable for startup/shutdown conditions
-
----
-
-## 🔮 Future Work
-
-* Hybrid physics + ML models
-* Online retraining (sliding window)
-* Uncertainty quantification
-* Integration with Digital Twin
-
----
-
-## 📚 References
-
-* Dayal et al. (1994) — Kamyr Digester Modeling
-* OpenMV Dataset — Kevin Dunn
-* TAPPI T236 Standard (Kappa measurement)
-* Gustafson et al. (Kraft kinetics model)
-
----
-
-## 👨‍💻 Author
-
-**Aayush Waghmare**
+Aayush Waghmare
 Chemical Engineering | AI/ML in Process Systems
 
----
+⭐ Final Note
 
-## 🌐 Links
-
-* Dataset: https://openmv.net/info/kamyr-digester
-
-
----
-
-## ⭐ Final Note
-
-This project demonstrates how **Chemical Engineering + Machine Learning** can be combined to build real-world industrial solutions like **soft sensors for process optimization**.
+This project shows how combining chemical engineering fundamentals with machine learning can lead to practical, deployable solutions such as real-time soft sensors for industrial processes.
